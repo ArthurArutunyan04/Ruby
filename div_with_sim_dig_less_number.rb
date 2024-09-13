@@ -1,4 +1,4 @@
-def div_with_sum_digit_less_number(number) #функция для нахождения количества нечетных цифр числа больших 3
+def div_with_sum_digit_less_number(number)
   result = 1
   orig_digit_sum = sum_digits(number)
 
@@ -10,7 +10,7 @@ def div_with_sum_digit_less_number(number) #функция для нахожде
   result
 end
 
-def sum_digits(number)  #функция для нахождения суммы цифр
+def sum_digits(number)
   sum = 0
   while number > 0
     sum += number % 10
@@ -20,7 +20,7 @@ def sum_digits(number)  #функция для нахождения суммы �
 end
 
 print "Введите число: "
-number = gets.chomp.to_i   #Считывает введенное число, удаляет символ новой строки и преобразовывает цисло в целое 
+number = gets.chomp.to_i
 function_3 = div_with_sum_digit_less_number(number)
 if function_3 == 1
   print "Таких делителей нет\n"
