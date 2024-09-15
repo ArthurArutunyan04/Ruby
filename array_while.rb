@@ -52,6 +52,6 @@ puts "Минимальный элемент: #{min_el}"c
 puts "Элементы массива: #{elements(array)}"
 first_pos_index = first_positive_index(array)
 puts "Индекс первого положительного элемента: #{first_pos_index}"
-
+ 
 
 
