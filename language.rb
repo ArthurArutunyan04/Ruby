@@ -18,3 +18,4 @@ when "c++"
 else
   puts "#{language}? Скоро будет ruby!"
 end
+ 
