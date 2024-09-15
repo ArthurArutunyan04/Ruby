@@ -20,7 +20,7 @@ def prime?(div)  #функция для проверки на простоту
   end
   true
 end
-
+ 
 print "Введите число: "
 number = gets.chomp.to_i #Считывает введенное число, удаляет символ новой строки и преобразовывает число в целое 
 function_1 = sum_prime_divs(number)
