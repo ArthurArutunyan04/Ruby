@@ -13,4 +13,4 @@ end
 print "Введите число: "
 number = gets.chomp.to_i
 function_2 = count_odd_digits_greater_than_3(number)
-print("Количество нечетных цифр, больших 3: #{function_2}")
+print("Количество нечетных цифр, больших 3: #{function_2}") 
