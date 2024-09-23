@@ -2,16 +2,17 @@ class Student
   
   attr_accessor :id, :surname, :name, :patronymic, :phone, :telegram, :email, :git
 
-  def initialize(surname, name, patronymic, id: nil, phone: nil, telegram: nil, email: nil, git: nil)
-    @id = id
-    @surname = surname
-    @name = name
-    @patronymic = patronymic
-    @phone = phone
-    @telegram = telegram
-    @email = email
-    @git = git
+  def initialize(surname:, name:, patronymic:, id: nil, phone: nil, telegram: nil, email: nil, git: nil)
+    self.id = id
+    self.surname = surname
+    self.name = name
+    self.patronymic = patronymic
+    self.phone = phone
+    self.telegram = telegram
+    self.email = email
+    self.git = git
   end
+
 
   def to_s()
     "
