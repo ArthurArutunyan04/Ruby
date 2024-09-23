@@ -57,5 +57,17 @@
       def git=(git)
         @git = git =~ /^https:\/\/github\.com\/[a-zA-Z0-9_-]+\/?$/ ? git : nil
       end
+
+       def validate
+        validate_git && validate_contact
+      end
+    
+      def validate_git
+        !@git.nil?
+      end
+    
+      def validate_contact
+        !@phone.nil? || !@telegram.nil? || !@email.nil?
+      end
   end
     
