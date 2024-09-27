@@ -1,68 +1,32 @@
-class Student
-  attr_reader :id, :surname, :name, :patronymic, :telegram, :email, :git, :phone
+class Human
+  attr_reader :surname_with_initials, :git, :contact
 
-  def initialize(surname:, name:, patronymic:, id: nil, phone: nil, telegram: nil, email: nil, git: nil)
-    self.id = id
-    self.surname = surname
-    self.name = name
-    self.patronymic = patronymic
-    set_contacts(phone: phone, telegram: telegram, email: email, git: git)
+  def initialize(surname:, name:, patronymic:, git:, phone: nil, telegram: nil, email: nil)
+    @surname_with_initials = "#{surname} #{name[0]}.#{patronymic[0]}."
+    self.git = git
+    @contact = determine_contact(phone, telegram, email)
   end
 
-  def to_s
-    "
-    ID = #{@id || "Пусто"}
-    Surname = #{@surname}
-    Name = #{@name}
-    Patronymic = #{@patronymic}
-    Phone = #{@phone || "Пусто"}
-    Telegram = #{@telegram || "Пусто"}
-    Email = #{@email || "Пусто"}
-    Git = #{@git || "Пусто"}
-    "
-  end
-
-  def getInfo
-    "#{surname_with_initials}; Git: #{@git}; Contact: #{contact_method}"
-  end
-
-  def surname_with_initials
-    "#{@surname} #{@name[0]}.#{@patronymic[0]}."
-  end
-
-  def contact_method
-    if @phone
-      "Phone: #{@phone}"
-    elsif @telegram
-      "Telegram: #{@telegram}"
-    elsif @email
-      "Email: #{@email}"
+  def determine_contact(phone, telegram, email)
+    contact_info = phone || telegram || email || "Не указано"
+    case contact_info
+    when phone
+      "Phone: #{phone}"
+    when telegram
+      "Telegram: #{telegram}"
+    when email
+      "Email: #{email}"
     else
       "Не указано"
     end
   end
-  
-  def set_contacts(phone: nil, telegram: nil, email: nil, git: nil)
-    self.phone = phone
-    self.telegram = telegram
-    self.email = email
-    self.git = git
-  end
-  
-  def id=(id)
-    @id = id.to_s =~ /^\d+$/ ? id : nil
-  end
 
-  def surname=(surname)
-    @surname = surname =~ /^[A-ZА-Я][a-zа-я]+$/ ? surname : nil
-  end
-
-  def name=(name)
-    @name = name =~ /^[A-ZА-Я][a-zа-я]+$/ ? name : nil
-  end
-
-  def patronymic=(patronymic)
-    @patronymic = patronymic =~ /^[A-ZА-Я][a-zа-я]*$/ ? patronymic : nil
+  def to_s
+    output = []
+    output << "#{@surname_with_initials}"
+    output << "Git: #{@git}" 
+    output << "Контакт: #{@contact}"
+    output.join("; ")
   end
 
   private
@@ -82,30 +46,76 @@ class Student
   def git=(git)
     @git = git =~ /^https:\/\/github.com\/[a-zA-Z0-9-]+\/?$/ ? git : nil
   end
+end
 
-  def validate
-    validate_git && validate_contact
+
+class Student < Human
+  attr_reader :id, :phone, :telegram, :email, :patronymic
+
+  def initialize(surname:, name:, patronymic:, id: nil, phone: nil, telegram: nil, email: nil, git: nil)
+    super(surname: surname, name: name, patronymic: patronymic, git: git, phone: phone, telegram: telegram, email: email)
+    self.id = id
+    self.surname = surname
+    self.name = name
+    self.patronymic = patronymic
   end
 
-  def validate_git
-    !@git.nil?
+  def to_s
+    "
+    ID = #{@id || 'Пусто'}
+    Фио = #{@surname_with_initials}
+    Phone = #{@phone || 'Пусто'}
+    Telegram = #{@telegram || 'Пусто'}
+    Email = #{@email || 'Пусто'}
+    Git = #{@git || 'Пусто'}
+    "
   end
 
-  def validate_contact
-    !@phone.nil? && !@telegram.nil? && !@email.nil?
+
+  def getInfo
+    "#{surname_with_initials}; Git: #{@git}; Контакт: #{contact}"
+  end
+
+  def set_contacts(phone: nil, telegram: nil, email: nil, git: nil)
+    self.phone = phone
+    self.telegram = telegram
+    self.email = email
+    self.git = git
+  end
+
+  def id=(id)
+    @id = id.to_s =~ /^\d+$/ ? id : nil
+  end
+
+  def surname=(surname)
+    @surname = surname =~ /^[A-ZА-Я][a-zа-я]+$/ ? surname : nil
+  end
+
+  def name=(name)
+    @name = name =~ /^[A-ZА-Я][a-zа-я]+$/ ? name : nil
+  end
+
+  def patronymic=(patronymic)
+    @patronymic = patronymic =~ /^[A-ZА-Я][a-zа-я]*$/ ? patronymic : nil
   end
 end
 
 
-class Student_short
-  attr_reader :surname_with_initials, :git, :contact
+class Student_short < Human
+  attr_reader :id
 
   def initialize(student: nil, id: nil, info_string: nil)
     if student
-      @surname_with_initials = student.surname_with_initials
-      @git = student.git
-      @contact = student.contact_method
-    else id && info_string
+      super(
+        surname: student.surname_with_initials.split[0],
+        name: student.surname_with_initials.split[1][0],
+        patronymic: student.surname_with_initials.split[1][2],
+        git: student.git,
+        phone: student.phone,
+        telegram: student.telegram,
+        email: student.email
+      )
+    elsif id && info_string
       @id = id
       parse_info_string(info_string)
     end
@@ -113,10 +123,8 @@ class Student_short
 
   def to_s
     output = []
-    output << "ID: #{@id}" if @id 
-    output << "Фамилия и инициалы: #{@surname_with_initials}"
-    output << "Git: #{@git}" 
-    output << "Контакт: #{@contact}"
+    output << "ID: #{@id}" if @id
+    output << super
     output.join("; ")
   end
 
@@ -126,21 +134,9 @@ class Student_short
     details = info_string.split(';')
     surname, name, patronymic, phone, telegram, email, git = details.map(&:strip)
     @surname_with_initials = "#{surname} #{name[0]}.#{patronymic[0]}."
-    @git = git
+    self.git = git
     @contact = determine_contact(phone, telegram, email)
   end
-
-  def determine_contact(phone, telegram, email)
-    contact_info = phone || telegram || email || "Не указано"
-    case contact_info
-    when phone
-      "Phone: #{phone}"
-    when telegram
-      "Telegram: #{telegram}"
-    when email
-      "Email: #{email}"
-    else
-      "Не указано"
-    end
-  end
 end
+
+
