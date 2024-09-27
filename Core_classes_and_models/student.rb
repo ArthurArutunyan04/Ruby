@@ -22,13 +22,33 @@ class Student
     "
   end
 
+  def getInfo
+    "#{surname_with_initials}; Git: #{@git}; Contact: #{contact_method}"
+  end
+
+  def surname_with_initials
+    "#{@surname} #{@name[0]}.#{@patronymic[0]}."
+  end
+
+  def contact_method
+    if @phone
+      "Phone: #{@phone}"
+    elsif @telegram
+      "Telegram: #{@telegram}"
+    elsif @email
+      "Email: #{@email}"
+    else
+      "Не указано"
+    end
+  end
+  
   def set_contacts(phone: nil, telegram: nil, email: nil, git: nil)
     self.phone = phone
     self.telegram = telegram
     self.email = email
     self.git = git
   end
-
+  
   def id=(id)
     @id = id.to_s =~ /^\d+$/ ? id : nil
   end
