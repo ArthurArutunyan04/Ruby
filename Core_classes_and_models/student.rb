@@ -96,3 +96,51 @@ class Student
   end
 end
 
+
+class Student_short
+  attr_reader :surname_with_initials, :git, :contact
+
+  def initialize(student: nil, id: nil, info_string: nil)
+    if student
+      @surname_with_initials = student.surname_with_initials
+      @git = student.git
+      @contact = student.contact_method
+    else id && info_string
+      @id = id
+      parse_info_string(info_string)
+    end
+  end
+
+  def to_s
+    output = []
+    output << "ID: #{@id}" if @id 
+    output << "Фамилия и инициалы: #{@surname_with_initials}"
+    output << "Git: #{@git}" 
+    output << "Контакт: #{@contact}"
+    output.join("; ")
+  end
+
+  private
+
+  def parse_info_string(info_string)
+    details = info_string.split(';')
+    surname, name, patronymic, phone, telegram, email, git = details.map(&:strip)
+    @surname_with_initials = "#{surname} #{name[0]}.#{patronymic[0]}."
+    @git = git
+    @contact = determine_contact(phone, telegram, email)
+  end
+
+  def determine_contact(phone, telegram, email)
+    contact_info = phone || telegram || email || "Не указано"
+    case contact_info
+    when phone
+      "Phone: #{phone}"
+    when telegram
+      "Telegram: #{telegram}"
+    when email
+      "Email: #{email}"
+    else
+      "Не указано"
+    end
+  end
+end
