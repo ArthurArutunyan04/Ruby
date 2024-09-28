@@ -1,16 +1,16 @@
-def method_1(arr)
+def max_value(arr)
   arr.max
 end
 
-def method_2(arr)
+def min_value(arr)
   arr.min
 end
 
-def method_3(arr)
+def sum_values(arr)
   arr.sum
 end
 
-def method_4(arr)
+def sort_array(arr)
   arr.sort
 end
 
@@ -22,18 +22,17 @@ puts "Номера методов:\n1 - максимальное значени�
 begin
   array = File.read(file_path).split(',').map(&:to_i)
   result = case method_number
-           when 1 then method_1(array)
-           when 2 then method_2(array)
-           when 3 then method_3(array)
-           when 4 then method_4(array)
-           when 5 then method_5(array)
+           when 1 then max_value(array)
+           when 2 then min_value(array)
+           when 3 then sum_values(array)
+           when 4 then sort_array(array)
            else
              puts "Неверный номер метода."
              result = nil
            end
 
   if result
-    if method_number == 5
+    if method_number == 4
       puts "Результат: #{result.join(', ')}"  # Для сортировки, выводим отсортированный массив
     else
       puts "Результат: #{result}"
