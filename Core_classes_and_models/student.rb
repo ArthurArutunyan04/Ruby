@@ -1,4 +1,5 @@
 class Human
+  
   attr_reader :surname_with_initials, :git, :contact
 
   def initialize(surname:, name:, patronymic:, git:, phone: nil, telegram: nil, email: nil)
@@ -50,6 +51,7 @@ end
 
 
 class Student < Human
+  
   attr_reader :id, :phone, :telegram, :email, :patronymic
 
   def initialize(surname:, name:, patronymic:, id: nil, phone: nil, telegram: nil, email: nil, git: nil)
@@ -63,7 +65,7 @@ class Student < Human
   def to_s
     "
     ID = #{@id || 'Пусто'}
-    Фио = #{@surname_with_initials}
+    SWI = #{@surname_with_initials || 'Пусто'}
     Phone = #{@phone || 'Пусто'}
     Telegram = #{@telegram || 'Пусто'}
     Email = #{@email || 'Пусто'}
@@ -102,6 +104,7 @@ end
 
 
 class Student_short < Human
+  
   attr_reader :id
 
   def initialize(student: nil, id: nil, info_string: nil)
