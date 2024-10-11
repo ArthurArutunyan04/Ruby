@@ -1,7 +1,7 @@
 require_relative 'human'
 
 class Student < Human
-  attr_reader :id, :patronymic
+  attr_reader :id, :surname, :name, :patronymic
 
   def initialize(surname:, name:, patronymic:, id: nil, phone: nil, telegram: nil, email: nil, git: nil)
     super(surname: surname, name: name, patronymic: patronymic, git: git, phone: phone, telegram: telegram, email: email)
@@ -26,6 +26,8 @@ class Student < Human
     "#{surname_with_initials}; Git: #{@git}; Контакт: #{contact}"
   end
 
+  private
+  
   def id=(id)
     @id = id.to_s =~ /^\d+$/ ? id : nil
   end
