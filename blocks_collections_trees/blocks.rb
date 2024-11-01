@@ -25,12 +25,26 @@ def max_in_range(array, a, b)
 end
 
 
+def find_indices_less_than_left_neighbor(array)
+  indexes = []
+  array[1..-1].each_with_index do |element, i|
+    if yield(element, array[i])
+      indexes << (i + 1)
+    end
+  end
+
+  puts "Индексы элементов, меньших своего левого соседа: #{indexes.join(', ')}"
+  puts "Количество таких элементов: #{indexes.size}"
+end
+
+
 def get_array_from_input
   puts "Введите элементы массива:"
   array = gets.chomp.split.map(&:to_i)
   print_array(array)
   array
 end
+
 
 def get_array_from_file(file_path)
   if file_path.nil? || file_path.empty?
@@ -55,6 +69,7 @@ def print_array(array)
   puts "Введенный массив: #{array.join(', ')}"
 end
 
+
 def choose_input_method
   puts "Выберите способ ввода данных:"
   puts "1. Ввод с клавиатуры"
@@ -74,11 +89,13 @@ def choose_input_method
   end
 end
 
+
 def choose_task(array)
   puts "Выберите задачу для решения (введите номер):"
   puts "1. Найти количество элементов после последнего максимального."
   puts "2. Переместить элементы до минимального в конец массива."
   puts "3. Найти максимальный элемент в заданном интервале."
+  puts "4. Найти индексы элементов, меньших своего левого соседа."
   puts "6. Выход."
 
   task_choice = gets.chomp.to_i
@@ -91,6 +108,8 @@ def choose_task(array)
     puts "Введите интервал (a b):"
     a, b = gets.chomp.split.map(&:to_i)
     max_in_range(array, a, b) { |arr| arr.max }
+  when 4
+    find_indices_less_than_left_neighbor(array) { |current, left| current < left }
   when 6
     puts "Выход из программы."
     exit
@@ -98,6 +117,7 @@ def choose_task(array)
     puts "Некорректный выбор задачи."
   end
 end
+
 
 def main
   array = choose_input_method
