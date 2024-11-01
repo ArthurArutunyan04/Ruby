@@ -7,9 +7,13 @@ class Array_processor
   end
 
   def any?
-    self.array.each do |element|
-      if yield(element)
-        return true
+    if !block_given?
+      return !self.array.empty?
+    else
+      self.array.each do |element|
+        if yield(element)
+          return true
+        end
       end
     end
     false
