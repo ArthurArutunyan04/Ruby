@@ -53,6 +53,20 @@ class Array_processor
     accumulator
   end
 
+  def min_max
+    min = max = self.array[0]
+
+    self.array.each do |element|
+      if yield(element, min) < 0
+        min = element
+      end
+      if yield(element, max) > 0
+        max = element
+      end
+    end
+    [min, max]
+  end
+
   def to_s
     self.array.join(', ')
   end
@@ -62,8 +76,9 @@ processor = Array_processor.new([1, 12, 63, 24 ,95, 4, 77])
 puts processor
 puts processor.any? {|element| element < 0}
 puts processor.any?
-puts processor.find_index {|element| element == 63}
+# puts processor.find_index {|element| element == 63}
 puts processor.none?
 puts processor.none?{|element| element > 1111}
 puts processor.reduce{|accumulator, element| accumulator + element}
 puts processor.reduce(12){|accumulator, element| accumulator + element}
+puts processor.min_max{|element1, element2| element1 <=> element2}
