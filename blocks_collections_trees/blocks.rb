@@ -1,3 +1,5 @@
+require 'set'
+
 def count_elements_after_last_max(array)
   max_index = array.rindex(yield(array))
   count = array[max_index + 1..-1].size
@@ -35,6 +37,30 @@ def find_indices_less_than_left_neighbor(array)
 
   puts "Индексы элементов, меньших своего левого соседа: #{indexes.join(', ')}"
   puts "Количество таких элементов: #{indexes.size}"
+end
+
+
+def unique_prime_divisors(array)
+  prime_divisors = Set.new
+
+  array.each do |element|
+    (1..element).each do |divisor|
+      if element % divisor == 0 && yield(divisor)
+        prime_divisors.add(divisor)
+      end
+    end
+  end
+
+  result = prime_divisors.to_a
+  puts "Уникальные простые делители: #{result}"
+end
+
+
+def is_prime?(element)
+ if element < 2
+   return false
+ end
+  (2..Math.sqrt(element)).none? { |i| element % i == 0 }
 end
 
 
@@ -96,6 +122,7 @@ def choose_task(array)
   puts "2. Переместить элементы до минимального в конец массива."
   puts "3. Найти максимальный элемент в заданном интервале."
   puts "4. Найти индексы элементов, меньших своего левого соседа."
+  puts "5. Построить список положительных простых делителей."
   puts "6. Выход."
 
   task_choice = gets.chomp.to_i
@@ -110,6 +137,8 @@ def choose_task(array)
     max_in_range(array, a, b) { |arr| arr.max }
   when 4
     find_indices_less_than_left_neighbor(array) { |current, left| current < left }
+  when 5
+    unique_prime_divisors(array) { |element| is_prime?(element) }
   when 6
     puts "Выход из программы."
     exit
