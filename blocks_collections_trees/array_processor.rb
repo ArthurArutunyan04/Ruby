@@ -43,6 +43,15 @@ class Array_processor
     true
   end
 
+  def reduce(initial = nil)
+    accumulator = initial || array[0]
+    start_index = initial ? 0 : 1
+
+    self.array[start_index .. -1].each do |element|
+      accumulator = yield(accumulator, element)
+    end
+    accumulator
+  end
 
   def to_s
     self.array.join(', ')
@@ -52,6 +61,9 @@ end
 processor = Array_processor.new([1, 12, 63, 24 ,95, 4, 77])
 puts processor
 puts processor.any? {|element| element < 0}
+puts processor.any?
 puts processor.find_index {|element| element == 63}
 puts processor.none?
 puts processor.none?{|element| element > 1111}
+puts processor.reduce{|accumulator, element| accumulator + element}
+puts processor.reduce(12){|accumulator, element| accumulator + element}
