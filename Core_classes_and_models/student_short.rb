@@ -44,7 +44,7 @@ class Student_short < Human
     output.join("; ")
   end
 
-  private
+  private_class_method :new
 
   def initialize(surname:, name:, patronymic:, git:, phone: nil, telegram: nil, email: nil)
     super(surname: surname, name: name, patronymic: patronymic, git: git, phone: phone, telegram: telegram, email: email)
