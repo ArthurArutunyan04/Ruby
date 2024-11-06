@@ -2,8 +2,7 @@ require 'set'
 
 def count_elements_after_last_max(array)
   max_index = array.rindex(yield(array))
-  count = array[max_index + 1..-1].size
-  puts "Количество элементов после последнего максимального: #{count}"
+  array[max_index + 1..-1].size
 end
 
 
@@ -12,18 +11,13 @@ def move_elements_before_min(array)
   elements_after_min = array[min_index + 1..-1]
   elements_before_min = array[0...min_index]
   moved_array = [array[min_index]] + elements_after_min + elements_before_min
-  puts "Массив после перемещения: #{moved_array.join(', ')}"
+  moved_array.join(', ')
 end
 
 
 def max_in_range(array, a, b)
   range_elements = array.select { |element| element >= a && element <= b }
-  if range_elements.empty?
-    puts "Нет элементов в указанном интервале."
-  else
-    max_element = yield(range_elements)
-    puts "Максимальный элемент в интервале: #{max_element}"
-  end
+  yield(range_elements)
 end
 
 
@@ -34,9 +28,7 @@ def find_indices_less_than_left_neighbor(array)
       indexes << (i + 1)
     end
   end
-
-  puts "Индексы элементов, меньших своего левого соседа: #{indexes.join(', ')}"
-  puts "Количество таких элементов: #{indexes.size}"
+  indexes
 end
 
 
@@ -51,15 +43,14 @@ def unique_prime_divisors(array)
     end
   end
 
-  result = prime_divisors.to_a
-  puts "Уникальные простые делители: #{result}"
+  prime_divisors.to_a
 end
 
 
 def is_prime?(element)
- if element < 2
-   return false
- end
+  if element < 2
+    return false
+  end
   (2..Math.sqrt(element)).none? { |i| element % i == 0 }
 end
 
@@ -128,17 +119,23 @@ def choose_task(array)
   task_choice = gets.chomp.to_i
   case task_choice
   when 1
-    count_elements_after_last_max(array) { array.max }
+    count = count_elements_after_last_max(array) { array.max }
+    puts "Количество элементов после последнего максимального: #{count}"
   when 2
-    move_elements_before_min(array) { array.min }
+    moved_array = move_elements_before_min(array) {array.min}
+    puts "Массив после перемещения: #{moved_array}"
   when 3
     puts "Введите интервал (a b):"
     a, b = gets.chomp.split.map(&:to_i)
-    max_in_range(array, a, b) { |arr| arr.max }
+    max = max_in_range(array, a, b) { |arr| arr.max }
+    puts "Максимальный элемент в интервале: #{max}"
   when 4
-    find_indices_less_than_left_neighbor(array) { |current, left| current < left }
+    indexes = find_indices_less_than_left_neighbor(array) { |current, left| current < left }
+    puts "Индексы элементов, меньших своего левого соседа: #{indexes.join(', ')}"
+    puts "Количество таких элементов: #{indexes.size}"
   when 5
-    unique_prime_divisors(array) { |element| is_prime?(element) }
+    prime_divisors = unique_prime_divisors(array) { |element| is_prime?(element) }
+    puts "Уникальные простые делители: #{prime_divisors}"
   when 6
     puts "Выход из программы."
     exit
