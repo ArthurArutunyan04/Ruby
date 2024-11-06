@@ -82,6 +82,7 @@ def get_array_from_file(file_path)
   array
 end
 
+
 def print_array(array)
   puts "Введенный массив: #{array.join(', ')}"
 end
