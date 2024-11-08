@@ -1,5 +1,3 @@
-require 'set'
-
 def count_elements_after_last_max(array)
   max_index = array.rindex(yield(array))
   array[max_index + 1..-1].size
@@ -23,9 +21,11 @@ end
 
 def find_indices_less_than_left_neighbor(array)
   indexes = []
-  array[1..-1].each_with_index do |element, i|
-    if yield(element, array[i])
-      indexes << (i + 1)
+  (1...array.length).each do |index|
+    left = array[index - 1]
+    current = array[index]
+    if current < left
+      indexes << index
     end
   end
   indexes
@@ -33,17 +33,9 @@ end
 
 
 def unique_prime_divisors(array)
-  prime_divisors = Set.new
-
-  array.each do |element|
-    (1..element).each do |divisor|
-      if element % divisor == 0 && yield(divisor)
-        prime_divisors.add(divisor)
-      end
-    end
-  end
-
-  prime_divisors.to_a
+  array.flat_map do |element|
+    (2..element/2).select { |divisor| element % divisor == 0 && is_prime?(divisor) }
+  end.uniq
 end
 
 
@@ -51,7 +43,7 @@ def is_prime?(element)
   if element < 2
     return false
   end
-  (2..Math.sqrt(element)).none? { |i| element % i == 0 }
+    (2..Math.sqrt(element)).none? { |i| element % i == 0 }
 end
 
 
