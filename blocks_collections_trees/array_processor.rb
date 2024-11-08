@@ -6,7 +6,7 @@ class Array_processor
     self.array = array.freeze
   end
 
-  private :array=
+  private :array=, :array
 
   def any?
     if !block_given?
@@ -76,7 +76,7 @@ class Array_processor
 
   def find_all
     result = []
-    
+
     self.array.each do |element|
       if yield(element)
         result << element
