@@ -1,7 +1,6 @@
 require_relative 'human'
 
 class Student_short < Human
-  attr_accessor :id
   def self.from_student(student)
     student_short = new(
       surname: student.surname_with_initials.split[0],
@@ -15,10 +14,10 @@ class Student_short < Human
     )
     student_short
   end
-  
+
   def self.from_info_string(id, info_string)
     surname, name, patronymic, phone, telegram, email, git = parse_info_string(info_string)
-    
+
     student_short = new(
       surname: surname,
       name: name,
