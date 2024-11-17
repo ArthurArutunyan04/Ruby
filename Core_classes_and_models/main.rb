@@ -1,7 +1,26 @@
-require_relative   'class.rb'
+require_relative 'student'
+require_relative 'student_short'
 
-student1 = Student.new("Сервер", "Линукс", "Бэкендович", 1, "+77777777777", nil, "Sigma228@rambler.ru", nil)
-student2 = Student.new("Адидас", "Найк", "НьюБелансавич", 12, "+79234446661","NikePro", nil, "tgk")
+student = Student.new(
+  surname: "Иванов",
+  name: "Иван",
+  patronymic: "Иванович",
+  id: "1",
+  phone: "+71234567890",
+  telegram: "@1van",
+  email: "ivanov@mail.com",
+  )
+puts student.to_s
 
-puts student1
-puts student2
+student.id = "2"
+student.surname = "Фомилия"
+student.git =  "https://github.com/ivanov"
+student.set_contacts(email: "1Van0v@mail.ru")
+
+puts student.to_s
+
+student_sh_from_student = Student_short.from_student(student)
+puts student_sh_from_student
+
+student_sh_from_string = Student_short.from_info_string("4",student.getInfo)
+puts student_sh_from_string
