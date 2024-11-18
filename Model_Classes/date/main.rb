@@ -7,6 +7,9 @@ data = [
 data_matrix = Data_table.new(data)
 puts data_matrix
 
+puts data_matrix.get_count_row
+puts data_matrix.get_count_column
+puts data_matrix.get_element(1,1)
 
 
 
