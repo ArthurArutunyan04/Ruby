@@ -14,3 +14,5 @@ puts data_matrix.get_element(1,1)
 
 data_list = Data_list.new([7, 1, 4, 5, 2, 8])
 puts data_list
+
+puts data_list.select(3)
