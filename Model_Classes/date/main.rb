@@ -16,3 +16,4 @@ data_list = Data_list.new([7, 1, 4, 5, 2, 8])
 puts data_list
 
 puts data_list.select(3)
+puts data_list.get_selected([1,5,2])
