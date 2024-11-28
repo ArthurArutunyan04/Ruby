@@ -17,8 +17,9 @@ class Data_list_student_short < Data_list
 
       data << row
     end
-    data
+    Data_table.new(data)
   end
 
-  private :get_data, :get_names
+  private :get_names, :get_data
+
 end
