@@ -31,5 +31,9 @@ student_shorts = [
 
 data_list_students  = Data_list_student_short.new(student_shorts)
 
-puts data_list_students.get_names.join(" | ")
-puts data_list_students.get_data
+puts data_list_students.get_names_attributes_values_data_table
+
+
+
+
+

@@ -29,6 +29,11 @@ class Data_list
     raise NotImplementedError, "Должно быть переопределено в наследнике"
   end
 
+  def get_names_attributes_values_data_table
+    names = get_names
+    data = get_data
+    { names: names, data: data }
+  end
 
   def to_s
     self.elements.join(", ")
