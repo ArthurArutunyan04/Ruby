@@ -1,4 +1,4 @@
-require_relative '../entities/student_short'
+require_relative 'data_list'
 
 class Data_list_student_short < Data_list
   def get_names

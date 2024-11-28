@@ -2,7 +2,7 @@ class Data_list
   attr_accessor :elements
 
   def initialize(elements)
-    self.elements = elements.sort.freeze
+    self.elements = elements.freeze
   end
 
   def select(number)
