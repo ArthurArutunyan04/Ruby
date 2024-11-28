@@ -21,6 +21,15 @@ class Data_list
     selected_elements.join(", ")
   end
 
+  def get_names
+    raise NotImplementedError, "Должно быть переопределено в наследнике"
+  end
+
+  def get_data
+    raise NotImplementedError, "Должно быть переопределено в наследнике"
+  end
+
+
   def to_s
     self.elements.join(", ")
   end
