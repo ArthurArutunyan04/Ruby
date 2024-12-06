@@ -56,4 +56,17 @@ class Student < Human
     Git = #{@git || 'Пусто'}
     "
   end
+
+  def to_h
+    {
+      surname: @surname,
+      name: @name,
+      patronymic: @patronymic,
+      id: @id,
+      phone: @phone,
+      telegram: @telegram,
+      email: @email,
+      git: @git
+    }
+  end
 end
