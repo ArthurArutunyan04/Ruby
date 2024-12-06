@@ -20,15 +20,9 @@ end
 
 
 def find_indices_less_than_left_neighbor(array)
-  indexes = []
-  (1...array.length).each do |index|
-    left = array[index - 1]
-    current = array[index]
-    if current < left
-      indexes << index
-    end
-  end
-  indexes
+  indices = (1...array.length).to_a.select { |i| array[i] < array[i - 1] }
+  count = indices.size
+  [indices, count]
 end
 
 
@@ -123,9 +117,9 @@ def choose_task(array)
     max = max_in_range(array, a, b) { |arr| arr.max }
     puts "Максимальный элемент в интервале: #{max}"
   when 4
-    indexes = find_indices_less_than_left_neighbor(array) { |current, left| current < left }
-    puts "Индексы элементов, меньших своего левого соседа: #{indexes.join(', ')}"
-    puts "Количество таких элементов: #{indexes.size}"
+    indices, count = find_indices_less_than_left_neighbor(array)
+    puts "Индексы элементов, меньших своего левого соседа: #{indices}"
+    puts "Количество таких элементов: #{count}"
   when 5
     prime_divisors = unique_prime_divisors(array) { |element| is_prime?(element) }
     puts "Уникальные простые делители: #{prime_divisors}"
