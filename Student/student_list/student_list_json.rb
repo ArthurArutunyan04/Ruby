@@ -24,6 +24,9 @@ class Students_list_JSON
       file.write(JSON.pretty_generate(@students.map(&:to_h)))
     end
   end
+
+  def find_by_id(id)
+    @students.find { |student| student.id.to_s == id.to_s }
+  end
 end
 
- 
