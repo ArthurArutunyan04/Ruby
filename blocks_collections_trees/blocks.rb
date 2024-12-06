@@ -9,7 +9,6 @@ def move_elements_before_min(array)
   elements_after_min = array[min_index + 1..-1]
   elements_before_min = array[0...min_index]
   moved_array = [array[min_index]] + elements_after_min + elements_before_min
-  moved_array.join(', ')
 end
 
 
