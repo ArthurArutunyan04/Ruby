@@ -1,8 +1,13 @@
 class Data_list
-  attr_accessor :elements
+  attr_reader :elements
+  private :elements
 
   def initialize(elements)
     self.elements = elements.freeze
+  end
+
+  def elements=(new_elements)
+    @elements = new_elements
   end
 
   def select(number)
