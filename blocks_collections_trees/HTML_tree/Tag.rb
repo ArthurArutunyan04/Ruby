@@ -1,11 +1,18 @@
 class Tag
   attr_accessor :name, :attributes, :children, :content
 
+  include Comparable
+
   def initialize(name, attributes = {}, content = '')
     self.name = name
     self.attributes = attributes
     self.content = content
     self.children = []
+  end
+
+  def <=>(other)
+    return nil unless other.is_a?(Tag)
+    self.children.size <=> other.children.size
   end
 
   def add_child(child)

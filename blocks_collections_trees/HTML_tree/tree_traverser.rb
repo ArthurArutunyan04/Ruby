@@ -1,7 +1,18 @@
-require_relative 'tag'
-
 class TreeTraverser
   include Enumerable
+  include Comparable
+
+  def <=>(other)
+    return nil unless other.is_a?(Tag)
+
+    if self.children_count > other.children_count
+      return -1
+    elsif self.children_count < other.children_count
+      return 1
+    else
+      return 0
+    end
+  end
 
   def initialize(root)
     @root = root
@@ -25,8 +36,11 @@ class TreeTraverser
     end
   end
 
-
   def each(&block)
     DFS(&block)
+  end
+
+  def children_count
+    @root.children.size
   end
 end

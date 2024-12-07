@@ -1,5 +1,6 @@
 class HTML_tree
   attr_accessor :root
+  include Enumerable
 
   def initialize(file_path)
     html_content = File.read(file_path)
@@ -62,6 +63,11 @@ class HTML_tree
       cleaned_content = content_match.strip
       current_tag.content = cleaned_content unless cleaned_content.empty?
     end
+  end
+
+  def each(&block)
+    traverser = TreeTraverser.new(self.root)
+    traverser.each(&block)
   end
 
   def to_s(tag = self.root)
