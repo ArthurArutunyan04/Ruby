@@ -13,9 +13,4 @@ class Node
   end
 
 
-  def <=>(other)
-    return nil unless other.is_a?(Node)
-    self.info.date_birth <=> other.info.date_birth
-  end
-
 end
