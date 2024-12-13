@@ -46,6 +46,10 @@ class Student < Human
     end
   end
 
+  def initials
+    generate_surname_with_initials(@surname, @name, @patronymic)
+  end
+
   def to_s
     "
     ID = #{@id || 'Пусто'}

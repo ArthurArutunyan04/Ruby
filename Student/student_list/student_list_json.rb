@@ -42,6 +42,9 @@ class Students_list_JSON
     data_list
   end
 
+  def sort_by_initials
+    @students.sort_by!{|student| student.initials}
+  end
 
 end
 
