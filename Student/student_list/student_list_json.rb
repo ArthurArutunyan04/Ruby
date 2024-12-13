@@ -1,5 +1,6 @@
 require 'json'
 require_relative '../entities/student'
+require_relative '../entities/student_short'
 
 class Students_list_JSON
   def initialize(file_path)
@@ -28,5 +29,19 @@ class Students_list_JSON
   def find_by_id(id)
     @students.find { |student| student.id.to_s == id.to_s }
   end
+
+  def get_k_n_student_short_list(k:, n:, data_list: nil)
+
+    array_student_short = @students.each_with_object([]) {|student, array| array.append(Student_short.from_student(student))}
+
+    start_index = (k-1) * n
+    end_index = [start_index + n - 1, array_student_short.size - 1].min
+
+    data_list = Data_list_student_short.new(array_student_short[start_index..end_index])
+
+    data_list
+  end
+
+
 end
 
