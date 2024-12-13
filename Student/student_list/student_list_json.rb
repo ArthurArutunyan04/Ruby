@@ -46,5 +46,39 @@ class Students_list_JSON
     @students.sort_by!{|student| student.initials}
   end
 
-end
+  def new_id
+    new_id = @students.empty? ? 1 : @students.map { |student| student.id.to_i }.max + 1
+  end
 
+  private :new_id
+
+  def add_student(student)
+    student.id = new_id.to_s
+    @students << student
+  end
+
+  def replace_student_by_id(id, new_student)
+    index = @students.find_index { |student| student.id.to_s == id.to_s }
+
+    if index
+      @students[index] = new_student
+      new_student.id = id
+    else
+      raise "Студент с ID #{id} не найден."
+    end
+  end
+
+  def delete_student_by_id(id)
+    student = find_by_id(id)
+    if student
+      @students.delete_if { |student| student.id.to_s == id.to_s }
+    else
+      raise "Студент с ID #{id} не найден."
+    end
+  end
+
+  def get_student_short_count
+    @students.size
+  end
+
+end

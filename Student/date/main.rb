@@ -53,3 +53,46 @@ puts "\nПосле сортировки:"
 students_list.instance_variable_get(:@students).each do |student|
   puts student.initials
 end
+
+new_student = Student.new(
+  surname: 'Иванов',
+  name: 'Иван',
+  patronymic: 'Иванович',
+  phone: '+78765432100',
+  telegram: '@1one',
+  email: 'vanya@gmail.com',
+  git: 'https://github.com/ivan'
+)
+
+students_list.add_student(new_student)
+
+puts "==="*50
+students_list.instance_variable_get(:@students).each do |student|
+  puts student.initials
+end
+
+puts "==="*50
+
+students_list.instance_variable_get(:@students).each do |student|
+  puts student.initials
+end
+
+replace_student = Student.new(
+  surname: 'Беннингтон',
+  name: 'Честер',
+  patronymic: 'Рассел',
+  phone: '+78765432100',
+  telegram: '@solopark',
+  email: 'chester@gmail.com',
+  git: 'https://github.com/chester'
+)
+
+students_list.replace_student_by_id('1', replace_student)
+students_list.instance_variable_get(:@students).each { |student| puts "#{student.id}: #{student.name}" }
+
+puts "==="*50
+
+students_list.delete_student_by_id('1')
+students_list.instance_variable_get(:@students).each { |student| puts "#{student.id}: #{student.name}" }
+
+puts students_list.get_student_short_count
