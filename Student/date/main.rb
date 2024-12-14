@@ -4,6 +4,7 @@ require_relative 'data_list_student_short'
 require_relative '../entities/student'
 require_relative '../entities/student_short'
 require_relative '../student_list/student_list_json'
+require_relative '../student_list/student_list_yaml'
 
 data = [
   [1,2, "Текст"],
@@ -36,7 +37,8 @@ puts data_list_students.get_names_attributes_values_data_table
 
 puts "=="*100
 
-students_list = Students_list_JSON.new('C:\Users\lartu\Ruby\Student\students.json')
+# students_list = Students_list_JSON.new('C:\Users\lartu\Ruby\Student\students.json')
+students_list = Students_list_YAML.new('C:\Users\lartu\Ruby\Student\students.yaml')
 students_list.read_from_file
 
 result = students_list.get_k_n_student_short_list(k: 1, n: 3)
@@ -96,3 +98,5 @@ students_list.delete_student_by_id('1')
 students_list.instance_variable_get(:@students).each { |student| puts "#{student.id}: #{student.name}" }
 
 puts students_list.get_student_short_count
+
+students_list.write_to_file
