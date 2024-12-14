@@ -5,6 +5,7 @@ require_relative '../entities/student'
 require_relative '../entities/student_short'
 require_relative '../student_list/student_list_json'
 require_relative '../student_list/student_list_yaml'
+require_relative '../student_list/student_list_base'
 
 data = [
   [1,2, "Текст"],
@@ -31,15 +32,21 @@ student_shorts = [
   student_short2 = Student_short.from_student(student2)
 ]
 
-data_list_students  = Data_list_student_short.new(student_shorts)
+data_list_students = Data_list_student_short.new(student_shorts)
 
 puts data_list_students.get_names_attributes_values_data_table
 
 puts "=="*100
 
 # students_list = Students_list_JSON.new('C:\Users\lartu\Ruby\Student\students.json')
-students_list = Students_list_YAML.new('C:\Users\lartu\Ruby\Student\students.yaml')
-students_list.read_from_file
+# yaml_strategy = Students_list_YAML.new
+# students_list = Student_list_base.new('C:\Users\lartu\Ruby\Student\students.yaml', yaml_strategy)
+
+json_strategy = Students_list_JSON.new
+students_list = Student_list_base.new('C:\Users\lartu\Ruby\Student\students.json', json_strategy)
+# yaml_strategy = Students_list_YAML.new
+# students_list = Student_list_base.new('C:\Users\lartu\Ruby\Student\students.yaml', yaml_strategy)
+# students_list.read_from_file
 
 result = students_list.get_k_n_student_short_list(k: 1, n: 3)
 puts result
