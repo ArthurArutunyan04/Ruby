@@ -54,31 +54,24 @@ class Student < Human
   end
 
   def surname=(surname)
-    if Student.valid_surname?(surname)
+    raise ArgumentError.new("Некорректная фамилия") unless Student.valid_surname?(surname)
       @surname = surname
-    else
-      raise ArgumentError.new("Некорректная фамилия")
-    end
   end
 
   def name=(name)
-    if Student.valid_name?(name)
+    raise ArgumentError.new("Некорректное имя") unless Student.valid_name?(name)
       @name = name
-    else
-      raise ArgumentError.new("Некорректное имя")
-    end
   end
 
   def patronymic=(patronymic)
-    if Student.valid_patronymic?(patronymic)
+    raise ArgumentError.new("Некорректное отчество") unless Student.valid_patronymic?(patronymic)
       @patronymic = patronymic
-    else
-      raise ArgumentError.new("Некорректное отчество")
-    end
   end
 
   def date_birth=(date_birth)
-    @date_birth = Date.parse(date_birth)
+    return if date_birth.nil?
+      @date_birth = Date.parse(date_birth)
+    
   end
 
   def initials
