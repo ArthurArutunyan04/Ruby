@@ -2,7 +2,7 @@ require 'date'
 require_relative '../entities/student'
 require_relative '../entities/student_short'
 require_relative '../date/data_list_student_short'
-require_relative '../db_manager'
+require_relative '../database/db_manager'
 
 class Students_list_DB
   def initialize(db_params)
@@ -54,6 +54,8 @@ class Students_list_DB
     max_id = result.getvalue(0, 0).to_i
     max_id + 1
   end
+
+  private :new_id
 
   def add_student(student)
     student_id = new_id
