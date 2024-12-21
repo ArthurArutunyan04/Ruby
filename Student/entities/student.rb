@@ -1,13 +1,44 @@
 require_relative 'human'
+require 'date'
 
 class Student < Human
-  attr_reader :surname, :name, :patronymic
 
-  def initialize(surname:, name:, patronymic:, id: nil, phone: nil, telegram: nil, email: nil, git: nil)
+  include Comparable
+
+  attr_reader :surname, :name, :patronymic, :date_birth
+
+  def initialize(surname:, name:, patronymic:, id: nil, phone: nil, telegram: nil, email: nil, git: nil, date_birth: nil)
     super(id: id, surname: surname, name: name, patronymic: patronymic, phone: phone, telegram: telegram, email: email, git: git)
     self.surname = surname
     self.name = name
     self.patronymic = patronymic
+    self.date_birth = date_birth
+  end
+
+  def self.create_from_hash(student_hash)
+    self.new(
+      surname: student_hash[:surname],
+      name: student_hash[:name],
+      patronymic: student_hash[:patronymic],
+      date_birth: student_hash[:date_birth],
+      id: student_hash[:id],
+      phone: student_hash[:phone],
+      telegram: student_hash[:telegram],
+      email: student_hash[:email],
+      git: student_hash[:git]
+    )
+  end
+
+  def <=>(other)
+    return nil unless other.is_a?(Student)
+
+    if self.date_birth > other.date_birth
+      return -1
+    elsif self.date_birth < other.date_birth
+      return 1
+    else
+      return 0
+    end
   end
 
   def self.valid_surname?(surname)
@@ -46,6 +77,10 @@ class Student < Human
     end
   end
 
+  def date_birth=(date_birth)
+    @date_birth = Date.parse(date_birth)
+  end
+
   def initials
     generate_surname_with_initials(@surname, @name, @patronymic)
   end
@@ -58,6 +93,7 @@ class Student < Human
     Telegram = #{@telegram || 'Пусто'}
     Email = #{@email || 'Пусто'}
     Git = #{@git || 'Пусто'}
+    Data_birth = #{@date_birth || 'Пусто'}
     "
   end
 
@@ -74,3 +110,6 @@ class Student < Human
     }
   end
 end
+
+
+
