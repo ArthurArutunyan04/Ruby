@@ -6,7 +6,7 @@ require_relative '../db_manager'
 
 class Students_list_DB
   def initialize(db_params)
-    @db_manager = DB_manager.new(db_params)
+  @db_manager = DB_manager.instance(db_params)
   end
 
   def find_by_id(id)
