@@ -3,10 +3,11 @@ require_relative '../entities/student'
 require_relative '../entities/student_short'
 require_relative '../date/data_list_student_short'
 require_relative '../database/db_manager'
+require_relative 'student_list_interface'
 
-class Students_list_DB
+class Students_list_DB < Student_list_interface
   def initialize(db_params)
-  @db_manager = DB_manager.instance(db_params)
+    @db_manager = DB_manager.instance(db_params)
   end
 
   def find_by_id(id)

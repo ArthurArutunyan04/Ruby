@@ -1,7 +1,8 @@
 require_relative '../entities/student'
 require_relative '../entities/student_short'
+require_relative 'student_list_interface'
 
-class Student_list_base
+class Student_list_base < Student_list_interface
   def initialize(file_path, strategy)
     @file_path = file_path
     @strategy = strategy
