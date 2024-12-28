@@ -26,8 +26,4 @@ class Student_list_interface
     raise NotImplementedError, "Должно быть переопределено"
 
   end
-
-  def close
-    raise NotImplementedError, "Должно быть переопределено"
-  end
 end
