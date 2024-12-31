@@ -31,14 +31,22 @@ class Data_list
   end
 
   def get_data
-    raise NotImplementedError, "Должно быть переопределено в наследнике"
+    get_names_attributes_values_data_table(get_names)
   end
 
-  def get_names_attributes_values_data_table
-    names = get_names
-    data = get_data
-    { names: names, data: data }
+  def get_names_attributes_values_data_table(column_names)
+    table_data = []
+    self.elements.each_with_index do |element, index|
+      row = [index + 1]
+      column_names.each do |name|
+        row << element.instance_variable_get("@#{name}")
+      end
+      table_data << row
+    end
+
+    Data_table.new(table_data)
   end
+  private :get_names_attributes_values_data_table
 
   def to_s
     self.elements.join(", ")

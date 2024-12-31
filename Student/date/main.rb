@@ -25,19 +25,18 @@ require_relative '../student_list/student_list'
 # puts data_list.select(3)
 # puts data_list.get_selected([1,5,2])
 
-# student1 = Student.new(surname: "Иванов", name: "Иван", patronymic: "Иваныч", phone: "+71234567890")
-# student2 = Student.new(surname: "Фомилия", name: "Имя", patronymic: "Очество", telegram: "@NoName", email: "Anonimus46@mail.com")
-#
-# student_shorts = [
-#   student_short1 = Student_short.from_student(student1),
-#   student_short2 = Student_short.from_student(student2)
-# ]
-#
-# data_list_students = Data_list_student_short.new(student_shorts)
-#
-# puts data_list_students.get_names_attributes_values_data_table
+student1 = Student.new(surname: "Иванов", name: "Иван", patronymic: "Иваныч", phone: "+71234567890")
+student2 = Student.new(surname: "Фомилия", name: "Имя", patronymic: "Очество", telegram: "@NoName", email: "Anonimus46@mail.com")
 
-# puts "=="*100
+student_shorts = [
+  student_short1 = Student_short.from_student(student1),
+  student_short2 = Student_short.from_student(student2)
+]
+
+data_list_students = Data_list_student_short.new(student_shorts)
+puts data_list_students.get_data
+
+puts "=="*100
 
 # students_list = Students_list_JSON.new('C:\Users\lartu\Ruby\Student\students.json')
 # yaml_strategy = Students_list_YAML.new
