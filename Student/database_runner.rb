@@ -21,26 +21,26 @@ new_student = Student.new(
   date_birth: '2000-01-01'
 )
 
-# students_db.add_student(new_student)
+students_db.add_student(new_student)
 
 student = student_list.find_by_id(1)
 puts student.to_s if student
 
-students_lists = student_list.get_k_n_student_short_list(k: 3, n: 5)
-puts students_lists
+# students_lists = student_list.get_k_n_student_short_list(k: 3, n: 5)
+# puts students_lists
 
-new_student_data = Student.new(
-  surname: 'Петров',
-  name: 'Петр',
-  patronymic: 'Петрович',
-  phone: '+11187654321',
-  telegram: '@petrov',
-  email: 'petrov@mail.com',
-  git: 'https://github.com/petrov',
-  date_birth: '1999-02-02'
-)
-
-student_list.replace_student_by_id(1, new_student_data)
+# new_student_data = Student.new(
+#   surname: 'Петров',
+#   name: 'Петр',
+#   patronymic: 'Петрович',
+#   phone: '+11187654321',
+#   telegram: '@petrov',
+#   email: 'petrov@mail.com',
+#   git: 'https://github.com/petrov',
+#   date_birth: '1999-02-02'
+# )
+#
+# student_list.replace_student_by_id(1, new_student_data)
 
 # students_db.delete_student_by_id(1)
 
@@ -50,3 +50,4 @@ puts "Количество студентов: #{student_list.get_student_short_
 find_student = student_list.find_by_id(22)
 
 puts "Найденый студент: #{find_student}"
+

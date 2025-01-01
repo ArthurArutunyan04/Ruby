@@ -25,18 +25,18 @@ require_relative '../student_list/student_list'
 # puts data_list.select(3)
 # puts data_list.get_selected([1,5,2])
 
-student1 = Student.new(surname: "Иванов", name: "Иван", patronymic: "Иваныч", phone: "+71234567890")
-student2 = Student.new(surname: "Фомилия", name: "Имя", patronymic: "Очество", telegram: "@NoName", email: "Anonimus46@mail.com")
-
-student_shorts = [
-  student_short1 = Student_short.from_student(student1),
-  student_short2 = Student_short.from_student(student2)
-]
-
-data_list_students = Data_list_student_short.new(student_shorts)
-puts data_list_students.get_data
-
-puts "=="*100
+# student1 = Student.new(surname: "Иванов", name: "Иван", patronymic: "Иваныч", phone: "+71234567890")
+# student2 = Student.new(surname: "Фомилия", name: "Имя", patronymic: "Очество", telegram: "@NoName", email: "Anonimus46@mail.com")
+#
+# student_shorts = [
+#   student_short1 = Student_short.from_student(student1),
+#   student_short2 = Student_short.from_student(student2)
+# ]
+#
+# data_list_students = Data_list_student_short.new(student_shorts)
+# puts data_list_students.get_data
+#
+# puts "=="*100
 
 # students_list = Students_list_JSON.new('C:\Users\lartu\Ruby\Student\students.json')
 # yaml_strategy = Students_list_YAML.new
@@ -52,37 +52,39 @@ students_list = Student_list.new(list)
 
 puts students_list.find_by_id(2)
 
-result = students_list.get_k_n_student_short_list(k: 1, n: 3)
+result = students_list.get_k_n_student_short_list(k: 1, n: 4)
 puts result
 
 new_student = Student.new(
-  surname: 'Иванов',
-  name: 'Иван',
-  patronymic: 'Иванович',
-  phone: '+78765432100',
-  telegram: '@1one',
-  email: 'vanya@gmail.com',
-  git: 'https://github.com/ivan'
+  surname: 'Владимиров',
+  name: 'Владимир',
+  patronymic: 'Владимирович',
+  phone: '+79129876543',
+  telegram: '@vladimirov',
+  email: 'vladimirov@mail.ru',
+  git: 'https://github.com/vladimirov',
+  date_birth: '1995-06-06'
 )
 
 students_list.add_student(new_student)
 
 
-replace_student = Student.new(
-  surname: 'Беннингтон',
-  name: 'Честер',
-  patronymic: 'Рассел',
-  phone: '+78765432100',
-  telegram: '@solopark',
-  email: 'chester@gmail.com',
-  git: 'https://github.com/chester'
-)
+# replace_student = Student.new(
+#   surname: 'Нагиев',
+#   name: 'Дмитрий',
+#   patronymic: 'Владимирович',
+#   phone: '+77777777777',
+#   telegram: '@D1mas1ck',
+#   email: 'Demon123@gmail.com',
+#   git: 'https://github.com/Dmitr'
+# )
+#
+# students_list.add_student(replace_student)
 
-students_list.add_student(replace_student)
-
-students_list.replace_student_by_id('2', replace_student)
+# students_list.replace_student_by_id('2', replace_student)
 
 # students_list.delete_student_by_id('1')
 
 puts students_list.get_student_short_count
+
 

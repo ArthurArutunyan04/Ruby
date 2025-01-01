@@ -8,13 +8,18 @@ class Students_list_JSON < Student_list_strategy
     file_content = File.read(file_path)
     student_data = JSON.parse(file_content, symbolize_names: true)
 
-    student_data.map { |student| Student.new(**student) }
-  end
+    students = student_data.map { |student| Student.new(**student) }
 
-  def write_to_file(file_path, students)
-    File.open(file_path, 'w') do |file|
-      file.write(JSON.pretty_generate(students.map(&:to_h)))
+    students.each_with_object([]) do |student, unique_students|
+      unique_students << student unless unique_students.any? { |existing| existing == student }
     end
   end
 
+  def write_to_file(file_path, students)
+    unique_students = students.uniq
+
+    File.open(file_path, 'w') do |file|
+      file.write(JSON.pretty_generate(unique_students.map(&:to_h)))
+    end
+  end
 end

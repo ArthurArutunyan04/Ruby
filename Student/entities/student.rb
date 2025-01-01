@@ -41,6 +41,15 @@ class Student < Human
     end
   end
 
+  def ==(other)
+    return false unless other.is_a?(Student)
+
+    [:git, :phone, :email, :telegram, :id].any? do |attribute|
+      !self.send(attribute).nil? &&
+        self.send(attribute) == other.send(attribute)
+    end
+  end
+
   def self.valid_surname?(surname)
     surname.match?(/^[A-ZА-Я][a-zа-я]+$/)
   end
@@ -71,7 +80,6 @@ class Student < Human
   def date_birth=(date_birth)
     return if date_birth.nil?
       @date_birth = Date.parse(date_birth)
-    
   end
 
   def initials

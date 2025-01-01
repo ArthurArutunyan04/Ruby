@@ -10,7 +10,11 @@ class Student_list_base < Student_list_interface
   end
 
   def write_to_file
-    @strategy.write_to_file(@file_path, @students)
+    unique_students = @students.each_with_object([]) do |student, unique_students|
+      unique_students << student unless unique_students.any? { |existing| existing == student }
+    end
+
+    @strategy.write_to_file(@file_path, unique_students)
   end
 
   def find_by_id(id)
@@ -37,6 +41,10 @@ class Student_list_base < Student_list_interface
   end
 
   def add_student(student)
+    if @students.any? { |existing_student| existing_student == student }
+      raise ArgumentError, "Попытка добавить дублирующегося студента: #{student.inspect}"
+    end
+
     student.id = new_id.to_s
     @students << student
     @strategy.write_to_file(@file_path, @students)
@@ -45,13 +53,16 @@ class Student_list_base < Student_list_interface
   def replace_student_by_id(id, new_student)
     index = @students.find_index { |student| student.id.to_s == id.to_s }
     if index
-      @students[index] = new_student
-      new_student.id = id
-      @strategy.write_to_file(@file_path, @students)
+      unless @students.any? { |existing| existing == new_student }
+        @students[index] = new_student
+        new_student.id = id
+        write_to_file
+      end
     else
       raise "Студент с ID #{id} не найден."
     end
   end
+
 
   def delete_student_by_id(id)
     student = find_by_id(id)
