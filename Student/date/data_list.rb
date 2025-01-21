@@ -38,7 +38,7 @@ class Data_list
   def get_names_attributes_values_data_table(column_names)
     table_data = []
     self.elements.each_with_index do |element, index|
-      row = [index +
+      row = [index + 1]
       column_names.each do |name|
         row << element.instance_variable_get("@#{name}")
       end
