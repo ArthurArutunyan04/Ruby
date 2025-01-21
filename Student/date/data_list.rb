@@ -31,13 +31,14 @@ class Data_list
   end
 
   def get_data
-    get_names_attributes_values_data_table(get_names)
+    column_names = get_names
+    get_names_attributes_values_data_table(column_names)
   end
 
   def get_names_attributes_values_data_table(column_names)
     table_data = []
     self.elements.each_with_index do |element, index|
-      row = [index + 1]
+      row = [index +
       column_names.each do |name|
         row << element.instance_variable_get("@#{name}")
       end
