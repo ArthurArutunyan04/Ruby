@@ -6,6 +6,10 @@ class Data_table
     self.data = data
   end
 
+  def data
+    @data
+  end
+
   def get_element(row, column)
     self.data[row][column]
   end
@@ -16,10 +20,13 @@ class Data_table
 
   def get_count_column
     self.data[0].size
-    end
+  end
 
+  def [](row)
+    self.data[row]
+  end
   def to_s
-    self.data.map {|row| row.join("\t")}.join("\n")
+    self.data.to_s
   end
 
 end

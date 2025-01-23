@@ -27,16 +27,16 @@ require_relative '../student_list/student_list'
 # puts data_list.select(3)
 # puts data_list.get_selected([1,5,2])
 
-# student1 = Student.new(surname: "Иванов", name: "Иван", patronymic: "Иваныч", phone: "+71234567890")
-# student2 = Student.new(surname: "Фомилия", name: "Имя", patronymic: "Очество", telegram: "@NoName", email: "Anonimus46@mail.com")
-#
-# student_shorts = [
-#   student_short1 = Student_short.from_student(student1),
-#   student_short2 = Student_short.from_student(student2)
-# ]
-#
-# data_list_students = Data_list_student_short.new(student_shorts)
-# puts data_list_students.get_data
+student1 = Student.new(surname: "Иванов", name: "Иван", patronymic: "Иваныч", phone: "+71234567890")
+student2 = Student.new(surname: "Фомилия", name: "Имя", patronymic: "Очество", telegram: "@NoName", email: "Anonimus46@mail.com")
+
+student_shorts = [
+  student_short1 = Student_short.from_student(student1),
+  student_short2 = Student_short.from_student(student2)
+]
+
+data_list_students = Data_list_student_short.new(student_shorts)
+puts data_list_students.get_data
 #
 # puts "=="*100
 
@@ -107,23 +107,24 @@ require_relative '../student_list/student_list'
 
 
 
-
+#
 json_strategy = Students_list_JSON.new
-file_adapter = Student_list_base.new('C:/Users/lartu/Ruby/Student/students.json', json_strategy)
+file_adapter = Student_list_base.new('C:\\Users\\Artur\\Ruby\\Student\\students.json', json_strategy)
 file_adapter.read_to_file
-student_list = Student_list.new(file_adapter)
+
 
 puts "Из файла:"
-puts student_list.get_k_n_student_short_list(k: 1, n: 5)
-
+dda = file_adapter.get_k_n_student_short_list(k: 1, n: 20)
+puts dda.get_data
 db_params = { dbname: 'students', user: 'postgres', password: '1337', host: 'localhost', port: '5432' }
-db_adapter = Students_list_DB.new(db_params)
+db_adapter = Student_list_DB.new(db_params)
 student_list_db = Student_list.new(db_adapter)
 
 puts "Из бд:"
 puts student_list_db.get_k_n_student_short_list(k: 1, n: 5)
+db_adapter.close
 
-
+#
 
 
 

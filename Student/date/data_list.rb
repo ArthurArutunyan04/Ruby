@@ -1,9 +1,12 @@
+require_relative 'data_table'
+
 class Data_list
-  attr_reader :elements
-  private :elements
+  attr_accessor :elements,  :count
+  private :elements, :count
 
   def initialize(elements)
     self.elements = elements.freeze
+    @observer = []
   end
 
   def elements=(new_elements)
@@ -45,11 +48,25 @@ class Data_list
       table_data << row
     end
 
-    Data_table.new(table_data)
+    data_set = Data_table.new(table_data)
+    data_set
   end
   private :get_names_attributes_values_data_table
 
+  def add_observer(observer)
+    @observer << observer
+  end
+
+  def notify
+    @observer.each do |observer|
+      observer.set_table_params(get_names, self.count)
+      observer.set_table_data(get_data)
+    end
+  end
+
+
   def to_s
-    self.elements.join(", ")
+    self.elements.to_s
   end
 end
+

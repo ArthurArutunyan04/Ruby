@@ -30,73 +30,347 @@
     "git": "https://github.com/sidorov"
   },
   {
-    "surname": "Кузнецов",
-    "name": "Кузьма",
-    "patronymic": "Кузьмич",
+    "surname": "Алексеев",
+    "name": "Алексей",
+    "patronymic": "Алексеевич",
     "id": "5",
     "phone": "+79126789012",
-    "telegram": "@kuznetsov",
-    "email": "kuznetsov@mail.ru",
-    "git": "https://github.com/kuznetsov"
+    "telegram": "@alekseev",
+    "email": "alekseev@mail.ru",
+    "git": "https://github.com/alekseev"
   },
   {
-    "surname": "Александров",
-    "name": "Александр",
-    "patronymic": "Александрович",
+    "surname": "Васильев",
+    "name": "Василий",
+    "patronymic": "Васильевич",
     "id": "6",
-    "phone": "+79127890123",
-    "telegram": "@alexandrov",
-    "email": "alexandrov@mail.ru",
-    "git": "https://github.com/alexandrov"
+    "phone": null,
+    "telegram": "@vasilyev",
+    "email": null,
+    "git": "https://github.com/vasilyev"
   },
   {
-    "surname": "Михайлов",
-    "name": "Михаил",
-    "patronymic": "Михайлович",
+    "surname": "Григорьев",
+    "name": "Григорий",
+    "patronymic": "Григорьевич",
     "id": "7",
-    "phone": "+79128901234",
-    "telegram": "@mikhailov",
-    "email": "mikhailov@mail.ru",
-    "git": "https://github.com/mikhailov"
+    "phone": "+79127890123",
+    "telegram": "@grigoryev",
+    "email": null,
+    "git": "https://github.com/grigoryev"
   },
   {
     "surname": "Егоров",
     "name": "Егор",
     "patronymic": "Егорович",
     "id": "8",
-    "phone": "+79129012345",
-    "telegram": "@egorov",
+    "phone": null,
+    "telegram": null,
     "email": "egorov@mail.ru",
     "git": "https://github.com/egorov"
   },
   {
-    "surname": "Васильев",
-    "name": "Василий",
-    "patronymic": "Васильевич",
+    "surname": "Зайцев",
+    "name": "Захар",
+    "patronymic": "Захарович",
     "id": "9",
-    "phone": "+79120123456",
-    "telegram": "@vasilyev",
-    "email": "vasilyev@mail.ru",
-    "git": "https://github.com/vasilyev"
+    "phone": null,
+    "telegram": "@zaytsev",
+    "email": null,
+    "git": "https://github.com/zaytsev"
+  },
+  {
+    "surname": "Ильин",
+    "name": "Илья",
+    "patronymic": "Ильич",
+    "id": "10",
+    "phone": null,
+    "telegram": null,
+    "email": "ilyin@mail.ru",
+    "git": "https://github.com/ilyin"
+  },
+  {
+    "surname": "Кузнецов",
+    "name": "Кузьма",
+    "patronymic": "Кузьмич",
+    "id": "11",
+    "phone": "+79128901234",
+    "telegram": "@kuznetsov",
+    "email": "kuznetsov@mail.ru",
+    "git": "https://github.com/kuznetsov"
+  },
+  {
+    "surname": "Лебедев",
+    "name": "Лев",
+    "patronymic": "Львович",
+    "id": "12",
+    "phone": null,
+    "telegram": "@lebedev",
+    "email": null,
+    "git": "https://github.com/lebedev"
+  },
+  {
+    "surname": "Медведев",
+    "name": "Михаил",
+    "patronymic": "Михайлович",
+    "id": "13",
+    "phone": "+79129012345",
+    "telegram": null,
+    "email": "medvedev@mail.ru",
+    "git": "https://github.com/medvedev"
   },
   {
     "surname": "Николаев",
     "name": "Николай",
     "patronymic": "Николаевич",
-    "id": "10",
-    "phone": "+79121234567",
+    "id": "14",
+    "phone": null,
     "telegram": "@nikolaev",
-    "email": "nikolaev@mail.ru",
+    "email": null,
     "git": "https://github.com/nikolaev"
+  },
+  {
+    "surname": "Орлов",
+    "name": "Олег",
+    "patronymic": "Олегович",
+    "id": "15",
+    "phone": null,
+    "telegram": null,
+    "email": "orlov@mail.ru",
+    "git": "https://github.com/orlov"
+  },
+  {
+    "surname": "Павлов",
+    "name": "Павел",
+    "patronymic": "Павлович",
+    "id": "16",
+    "phone": "+79120123456",
+    "telegram": "@pavlov",
+    "email": null,
+    "git": "https://github.com/pavlov"
+  },
+  {
+    "surname": "Романов",
+    "name": "Роман",
+    "patronymic": "Романович",
+    "id": "17",
+    "phone": null,
+    "telegram": "@romanov",
+    "email": "romanov@mail.ru",
+    "git": "https://github.com/romanov"
+  },
+  {
+    "surname": "Смирнов",
+    "name": "Семен",
+    "patronymic": "Семенович",
+    "id": "18",
+    "phone": null,
+    "telegram": "@smirnov",
+    "email": null,
+    "git": "https://github.com/smirnov"
+  },
+  {
+    "surname": "Тихонов",
+    "name": "Тимофей",
+    "patronymic": "Тимофеевич",
+    "id": "19",
+    "phone": "+79121234567",
+    "telegram": null,
+    "email": null,
+    "git": "https://github.com/tikhonov"
+  },
+  {
+    "surname": "Ушаков",
+    "name": "Ульян",
+    "patronymic": "Ульянович",
+    "id": "20",
+    "phone": null,
+    "telegram": "@ushakov",
+    "email": "ushakov@mail.ru",
+    "git": "https://github.com/ushakov"
   },
   {
     "surname": "Федоров",
     "name": "Федор",
     "patronymic": "Федорович",
-    "id": "11",
-    "phone": "+79122345678",
+    "id": "21",
+    "phone": "+79123456780",
     "telegram": "@fedorov",
-    "email": "fedorov@mail.ru",
+    "email": null,
     "git": "https://github.com/fedorov"
+  },
+  {
+    "surname": "Харитонов",
+    "name": "Харитон",
+    "patronymic": "Харитонович",
+    "id": "22",
+    "phone": null,
+    "telegram": null,
+    "email": "haritonov@mail.ru",
+    "git": "https://github.com/haritonov"
+  },
+  {
+    "surname": "Цветков",
+    "name": "Цезарь",
+    "patronymic": "Цезаревич",
+    "id": "23",
+    "phone": "+79127890124",
+    "telegram": null,
+    "email": null,
+    "git": "https://github.com/tsvetkov"
+  },
+  {
+    "surname": "Чистов",
+    "name": "Чеслав",
+    "patronymic": "Чеславович",
+    "id": "24",
+    "phone": null,
+    "telegram": "@chistov",
+    "email": null,
+    "git": "https://github.com/chistov"
+  },
+  {
+    "surname": "Широков",
+    "name": "Шамиль",
+    "patronymic": "Шамильевич",
+    "id": "25",
+    "phone": null,
+    "telegram": null,
+    "email": "shirokov@mail.ru",
+    "git": "https://github.com/shirokov"
+  },
+  {
+    "surname": "Щербаков",
+    "name": "Щербак",
+    "patronymic": "Щербакович",
+    "id": "26",
+    "phone": "+79123456781",
+    "telegram": null,
+    "email": null,
+    "git": "https://github.com/shcherbakov"
+  },
+  {
+    "surname": "Эдуардов",
+    "name": "Эдуард",
+    "patronymic": "Эдуардович",
+    "id": "27",
+    "phone": null,
+    "telegram": "@eduardov",
+    "email": "eduardov@mail.ru",
+    "git": "https://github.com/eduardov"
+  },
+  {
+    "surname": "Юрьев",
+    "name": "Юрий",
+    "patronymic": "Юрьевич",
+    "id": "28",
+    "phone": "+79123456782",
+    "telegram": null,
+    "email": null,
+    "git": "https://github.com/yuryev"
+  },
+  {
+    "surname": "Яковлев",
+    "name": "Яков",
+    "patronymic": "Яковлевич",
+    "id": "29",
+    "phone": null,
+    "telegram": "@yakovlev",
+    "email": "yakovlev@mail.ru",
+    "git": "https://github.com/yakovlev"
+  },
+  {
+    "surname": "Абрамов",
+    "name": "Абрам",
+    "patronymic": "Абрамович",
+    "id": "30",
+    "phone": null,
+    "telegram": null,
+    "email": "abramov@mail.ru",
+    "git": "https://github.com/abramov"
+  },
+  {
+    "surname": "Богданов",
+    "name": "Богдан",
+    "patronymic": "Богданович",
+    "id": "31",
+    "phone": "+79123456783",
+    "telegram": "@bogdanov",
+    "email": null,
+    "git": "https://github.com/bogdanov"
+  },
+  {
+    "surname": "Владимиров",
+    "name": "Владимир",
+    "patronymic": "Владимирович",
+    "id": "32",
+    "phone": null,
+    "telegram": null,
+    "email": "vladimirov@mail.ru",
+    "git": "https://github.com/vladimirov"
+  },
+  {
+    "surname": "Гаврилов",
+    "name": "Гавриил",
+    "patronymic": "Гаврилович",
+    "id": "33",
+    "phone": "+79123456784",
+    "telegram": "@gavrilov",
+    "email": null,
+    "git": "https://github.com/gavrilov"
+  },
+  {
+    "surname": "Денисов",
+    "name": "Денис",
+    "patronymic": "Денисович",
+    "id": "34",
+    "phone": null,
+    "telegram": "@denisov",
+    "email": "denisov@mail.ru",
+    "git": "https://github.com/denisov"
+  },
+  {
+    "surname": "Ефимов",
+    "name": "Ефим",
+    "patronymic": "Ефимович",
+    "id": "35",
+    "phone": "+79123456785",
+    "telegram": null,
+    "email": null,
+    "git": "https://github.com/yefimov"
+  },
+  {
+    "surname": "Жданов",
+    "name": "Ждан",
+    "patronymic": "Жданович",
+    "id": "36",
+    "phone": null,
+    "telegram": "@zhdanov",
+    "email": "zhdanov@mail.ru",
+    "git": "https://github.com/zhdanov"
+  },
+  {
+    "surname": "Зиновьев",
+    "name": "Зиновий",
+    "patronymic": "Зиновьевич",
+    "id": "37",
+    "phone": "+79123456786",
+    "telegram": "@zinoviev",
+    "email": null,
+    "git": "https://github.com/zinoviev"
+  },
+  {
+    "surname": "Игнатьев",
+    "name": "Игнат",
+    "patronymic": "Игнатьевич",
+    "id": "38",
+    "phone": null,
+    "telegram": null,
+    "email": "ignatiev@mail.ru",
+    "git": "https://github.com/ignatiev"
   }
 ]
+
+
+
+

@@ -32,10 +32,15 @@ class Student_list_base
     start_index = (k - 1) * n
     end_index = [start_index + n - 1, array_student_short.size - 1].min
 
-    data_list = Data_list_student_short.new(array_student_short[start_index..end_index])
+    if data_list
+      data_list.elements = array_student_short[start_index..end_index]
+    else
+      data_list = Data_list_student_short.new(array_student_short[start_index..end_index])
+    end
 
     data_list
   end
+
 
   def sort_by_initials
     @students.sort_by! { |student| student.initials }
@@ -82,3 +87,4 @@ class Student_list_base
     @students.size
   end
 end
+
