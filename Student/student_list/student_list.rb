@@ -11,10 +11,6 @@ class Student_list
     @adapter.get_k_n_student_short_list(k: k, n: n)
   end
 
-  def new_id
-    @adapter.new_id
-  end
-
   def add_student(student)
     @adapter.add_student(student)
   end

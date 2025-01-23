@@ -50,18 +50,9 @@ class Students_list_DB < Student_list_interface
     Data_list_student_short.new(student_shorts)
   end
 
-  def new_id
-    result = @db_manager.exec_query("SELECT MAX(id) FROM student")
-    max_id = result.getvalue(0, 0).to_i
-    max_id + 1
-  end
-
-  private :new_id
-
   def add_student(student)
-    student_id = new_id
-    @db_manager.exec_query("INSERT INTO student (id, surname, name, patronymic, phone_number, telegram, email, git, date_birth)
-                VALUES (#{student_id}, '#{student.surname}', '#{student.name}', '#{student.patronymic}', '#{student.phone}',
+    @db_manager.exec_query("INSERT INTO student (surname, name, patronymic, phone_number, telegram, email, git, date_birth)
+                VALUES ('#{student.surname}', '#{student.name}', '#{student.patronymic}', '#{student.phone}',
                         '#{student.telegram}', '#{student.email}', '#{student.git}', '#{student.date_birth}')")
   end
 

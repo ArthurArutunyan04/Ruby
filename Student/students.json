@@ -1,62 +1,102 @@
 [
   {
-    "surname": "Беннингтон",
-    "name": "Честер",
-    "patronymic": "Рассел",
-    "id": "2",
-    "phone": "+78765432100",
-    "telegram": "@solopark",
-    "email": "chester@gmail.com",
-    "git": "https://github.com/chester"
-  },
-  {
     "surname": "Иванов",
     "name": "Иван",
     "patronymic": "Иванович",
+    "id": "2",
+    "phone": "+79123456789",
+    "telegram": "@ivanov",
+    "email": "ivanov@mail.ru",
+    "git": "https://github.com/ivanov"
+  },
+  {
+    "surname": "Петров",
+    "name": "Петр",
+    "patronymic": "Петрович",
+    "id": "3",
+    "phone": "+79124567890",
+    "telegram": "@petrov",
+    "email": "petrov@mail.ru",
+    "git": "https://github.com/petrov"
+  },
+  {
+    "surname": "Сидоров",
+    "name": "Сидор",
+    "patronymic": "Сидорович",
     "id": "4",
-    "phone": "+78765432130",
-    "telegram": "@1one",
-    "email": "vanya@gmail.com",
-    "git": "https://github.com/ivan"
+    "phone": "+79125678901",
+    "telegram": "@sidorov",
+    "email": "sidorov@mail.ru",
+    "git": "https://github.com/sidorov"
   },
   {
-    "surname": "Нагиев",
-    "name": "Дмитрий",
-    "patronymic": "Владимирович",
+    "surname": "Кузнецов",
+    "name": "Кузьма",
+    "patronymic": "Кузьмич",
     "id": "5",
-    "phone": "+77777777777",
-    "telegram": "@D1mas1ck",
-    "email": "Demon123@gmail.com",
-    "git": "https://github.com/Dmitr"
+    "phone": "+79126789012",
+    "telegram": "@kuznetsov",
+    "email": "kuznetsov@mail.ru",
+    "git": "https://github.com/kuznetsov"
   },
   {
-    "surname": "Беннингтон",
-    "name": "Честер",
-    "patronymic": "Рассел",
-    "id": "2",
-    "phone": "+78765432100",
-    "telegram": "@solopark",
-    "email": "chester@gmail.com",
-    "git": "https://github.com/chester"
+    "surname": "Александров",
+    "name": "Александр",
+    "patronymic": "Александрович",
+    "id": "6",
+    "phone": "+79127890123",
+    "telegram": "@alexandrov",
+    "email": "alexandrov@mail.ru",
+    "git": "https://github.com/alexandrov"
   },
   {
-    "surname": "Беннингтон",
-    "name": "Честер",
-    "patronymic": "Рассел",
-    "id": "2",
-    "phone": "+78765432100",
-    "telegram": "@solopark",
-    "email": "chester@gmail.com",
-    "git": "https://github.com/chester"
+    "surname": "Михайлов",
+    "name": "Михаил",
+    "patronymic": "Михайлович",
+    "id": "7",
+    "phone": "+79128901234",
+    "telegram": "@mikhailov",
+    "email": "mikhailov@mail.ru",
+    "git": "https://github.com/mikhailov"
   },
   {
-    "surname": "Беннингтон",
-    "name": "Честер",
-    "patronymic": "Рассел",
-    "id": "2",
-    "phone": "+78765432100",
-    "telegram": "@solopark",
-    "email": "chester@gmail.com",
-    "git": "https://github.com/chester"
+    "surname": "Егоров",
+    "name": "Егор",
+    "patronymic": "Егорович",
+    "id": "8",
+    "phone": "+79129012345",
+    "telegram": "@egorov",
+    "email": "egorov@mail.ru",
+    "git": "https://github.com/egorov"
+  },
+  {
+    "surname": "Васильев",
+    "name": "Василий",
+    "patronymic": "Васильевич",
+    "id": "9",
+    "phone": "+79120123456",
+    "telegram": "@vasilyev",
+    "email": "vasilyev@mail.ru",
+    "git": "https://github.com/vasilyev"
+  },
+  {
+    "surname": "Николаев",
+    "name": "Николай",
+    "patronymic": "Николаевич",
+    "id": "10",
+    "phone": "+79121234567",
+    "telegram": "@nikolaev",
+    "email": "nikolaev@mail.ru",
+    "git": "https://github.com/nikolaev"
+  },
+  {
+    "surname": "Федоров",
+    "name": "Федор",
+    "patronymic": "Федорович",
+    "id": "11",
+    "phone": "+79122345678",
+    "telegram": "@fedorov",
+    "email": "fedorov@mail.ru",
+    "git": "https://github.com/fedorov"
   }
 ]

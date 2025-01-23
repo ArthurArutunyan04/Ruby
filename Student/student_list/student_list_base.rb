@@ -1,12 +1,17 @@
 require_relative '../entities/student'
 require_relative '../entities/student_short'
-require_relative 'student_list_interface'
 
-class Student_list_base < Student_list_interface
+
+class Student_list_base
+  attr_accessor :strategy, :file_path
   def initialize(file_path, strategy)
-    @file_path = file_path
-    @strategy = strategy
-    @students = strategy.read_from_file(file_path)
+    self.file_path = file_path
+    self.strategy = strategy
+    @students = []
+  end
+
+  def read_to_file
+    @students = self.strategy.read_from_file(file_path)
   end
 
   def write_to_file
@@ -14,11 +19,11 @@ class Student_list_base < Student_list_interface
       unique_students << student unless unique_students.any? { |existing| existing == student }
     end
 
-    @strategy.write_to_file(@file_path, unique_students)
+    self.strategy.write_to_file(self.file_path, unique_students)
   end
 
   def find_by_id(id)
-    @students.find { |student| student.id.to_s == id.to_s }
+    self.strategy.find { |student| student.id.to_s == id.to_s }
   end
 
   def get_k_n_student_short_list(k:, n:, data_list: nil)
@@ -47,7 +52,7 @@ class Student_list_base < Student_list_interface
 
     student.id = new_id.to_s
     @students << student
-    @strategy.write_to_file(@file_path, @students)
+    self.strategy.write_to_file(self.file_path, @students)
   end
 
   def replace_student_by_id(id, new_student)
@@ -63,12 +68,11 @@ class Student_list_base < Student_list_interface
     end
   end
 
-
   def delete_student_by_id(id)
     student = find_by_id(id)
     if student
       @students.delete_if { |student| student.id.to_s == id.to_s }
-      @strategy.write_to_file(@file_path, @students)
+      self.strategy.write_to_file(self.file_path, @students)
     else
       raise "Студент с ID #{id} не найден."
     end

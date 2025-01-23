@@ -15,7 +15,6 @@ class Students_list_YAML < Student_list_strategy
     end
   end
 
-
   def write_to_file(file_path, students)
     unique_students = students.uniq
 
@@ -24,6 +23,3 @@ class Students_list_YAML < Student_list_strategy
     end
   end
 end
-
-
-

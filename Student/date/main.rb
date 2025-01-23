@@ -6,6 +6,8 @@ require_relative '../entities/student_short'
 require_relative '../student_list/student_list_json'
 require_relative '../student_list/student_list_yaml'
 require_relative '../student_list/student_list_base'
+require_relative '../student_list/student_list_db'
+require_relative '../student_list/student_list_base_adapter'
 require_relative '../student_list/student_list'
 
 # data = [
@@ -45,28 +47,30 @@ require_relative '../student_list/student_list'
 # json_strategy = Students_list_JSON.new
 # list = Student_list_base.new('C:\Users\lartu\Ruby\Student\students.json', json_strategy)
 # students_list = Student_list.new(list)
-yaml_strategy = Students_list_YAML.new
-list = Student_list_base.new('C:\Users\lartu\Ruby\Student\students.yaml', yaml_strategy)
-students_list = Student_list.new(list)
+# yaml_strategy = Students_list_YAML.new
+# list = Student_list_base.new('C:\Users\lartu\Ruby\Student\students.yaml', yaml_strategy)
+# students_list = Student_list.new(list)
 
-
-puts students_list.find_by_id(2)
-
-result = students_list.get_k_n_student_short_list(k: 1, n: 4)
-puts result
-
-new_student = Student.new(
-  surname: 'Владимиров',
-  name: 'Владимир',
-  patronymic: 'Владимирович',
-  phone: '+79129876543',
-  telegram: '@vladimirov',
-  email: 'vladimirov@mail.ru',
-  git: 'https://github.com/vladimirov',
-  date_birth: '1995-06-06'
-)
-
-students_list.add_student(new_student)
+#
+# puts students_list.find_by_id(2)
+#
+# result = students_list.get_k_n_student_short_list(k: 1, n: 4)
+# puts result
+#
+# puts "22"
+#
+# new_student = Student.new(
+#   surname: 'Владимиров',
+#   name: 'Владимир',
+#   patronymic: 'Владимирович',
+#   phone: '+79129876543',
+#   telegram: '@vladimirov',
+#   email: 'vladimirov@mail.ru',
+#   git: 'https://github.com/vladimirov',
+#   date_birth: '1995-06-06'
+# )
+#
+# students_list.add_student(new_student)
 
 
 # replace_student = Student.new(
@@ -85,6 +89,59 @@ students_list.add_student(new_student)
 
 # students_list.delete_student_by_id('1')
 
-puts students_list.get_student_short_count
+# puts students_list.get_student_short_count
+
+
+
+# json_strategy = Students_list_JSON.new
+# student_list = Student_list_base.new('C:/Users/lartu/Ruby/Student/students.json', json_strategy)
+# student_list.read_to_file
+#
+#
+# yaml_strategy = Students_list_YAML.new
+#
+# student_list.strategy = yaml_strategy
+# student_list.file_path = 'C:/Users/lartu/Ruby/Student/students.yaml'
+# student_list.write_to_file
+
+
+
+
+
+json_strategy = Students_list_JSON.new
+file_adapter = Student_list_base.new('C:/Users/lartu/Ruby/Student/students.json', json_strategy)
+file_adapter.read_to_file
+student_list = Student_list.new(file_adapter)
+
+puts "Из файла:"
+puts student_list.get_k_n_student_short_list(k: 1, n: 5)
+
+db_params = { dbname: 'students', user: 'postgres', password: '1337', host: 'localhost', port: '5432' }
+db_adapter = Students_list_DB.new(db_params)
+student_list_db = Student_list.new(db_adapter)
+
+puts "Из бд:"
+puts student_list_db.get_k_n_student_short_list(k: 1, n: 5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
