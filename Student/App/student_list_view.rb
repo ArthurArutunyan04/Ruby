@@ -1,6 +1,6 @@
 require 'fox16'
 require_relative 'student_list_controller'
-require_relative '../student_list/student_list_db'
+# require_relative '../student_list/student_list_db'
 
 
 include Fox
@@ -108,10 +108,12 @@ class Student_list_view < FXMainWindow
 
     @prev_button.connect(SEL_COMMAND) do
       change_page(-1)
+      @controller.refresh_data
 
     end
     @next_button.connect(SEL_COMMAND) do
       change_page(1)
+      @controller.refresh_data
 
     end
   end
@@ -195,6 +197,25 @@ class Student_list_view < FXMainWindow
 
   private :setup_filtration, :add_filter, :reset_filters, :setup_buttons, :change_page, :update_table_data, :check_count_selected_rows, :setup_table
 
+  def total_pages
+    @total_pages
+  end
+
+  def total_pages=(value)
+    @total_pages = value
+    @page_index.setText("#{@current_page + 1} / #{@total_pages}") if @page_index
+  end
+
+  def current_page
+    @current_page
+  end
+
+  def current_page=(value)
+    if value >= 0 && value < @total_pages
+      @current_page = value
+      @controller.refresh_data
+    end
+  end
 
 
 
